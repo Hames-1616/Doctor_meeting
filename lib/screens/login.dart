@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
+import 'package:project/screens/admeme.dart';
 import 'package:project/screens/doctor_login.dart';
 import 'package:project/screens/home.dart';
 import 'package:project/screens/patient_login.dart';
@@ -29,7 +30,9 @@ class _loginState extends State<login> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.to(admemem());
+            },
             icon: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(100),
