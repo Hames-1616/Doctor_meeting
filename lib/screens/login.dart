@@ -33,7 +33,7 @@ class _loginState extends State<login> {
         elevation: 0,
         leading: IconButton(
             onPressed: () {
-              Get.to(admemem());
+              Get.to(const admemem());
             },
             icon: Container(
               decoration: BoxDecoration(
@@ -52,7 +52,7 @@ class _loginState extends State<login> {
       body: Center(
         child: Container(
           height: MediaQuery.of(context).size.height,
-          margin: EdgeInsets.only(left: 10,right: 10),
+          margin: const EdgeInsets.only(left: 10,right: 10),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -62,7 +62,7 @@ class _loginState extends State<login> {
                 width: MediaQuery.of(context).size.width/wid(context, 250),
                 child: CachedNetworkImage(
                     imageUrl: "https://img.icons8.com/ultraviolet/512/doctors-bag.png",
-                    placeholder: (context, url) => CircularProgressIndicator(
+                    placeholder: (context, url) => const CircularProgressIndicator(
                           color: Colors.blue,
                         )),
               ),
@@ -70,9 +70,9 @@ class _loginState extends State<login> {
                 child: const Text("Log in as Patient"),
                 onPressed: () {
                   if (b) {
-                    Get.offAll(home());
+                    Get.offAll(const home());
                   } else {
-                    Get.to(patientlog());
+                    Get.to(const patientlog());
                   }
                 },
               ),
@@ -82,7 +82,7 @@ class _loginState extends State<login> {
               ElevatedButton(
                 child: const Text("Log in as Doctor"),
                 onPressed: () {
-                  Get.to(doctorLogin());
+                  Get.to(const doctorLogin());
                 },
               ),
             ],

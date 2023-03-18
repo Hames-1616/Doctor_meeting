@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -6,6 +7,7 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:project/screens/add_category.dart';
 import 'package:project/screens/add_doctor.dart';
 import 'package:project/screens/remove_doctor.dart';
+import 'package:project/utils/Dimensions.dart';
 
 class admain extends StatefulWidget {
   const admain({super.key});
@@ -22,7 +24,17 @@ class _admainState extends State<admain> {
         width: MediaQuery.of(context).size.width,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            Container(
+                height: MediaQuery.of(context).size.height/hei(context, 250),
+                width: MediaQuery.of(context).size.width/wid(context, 250),
+                child: CachedNetworkImage(
+                    imageUrl: "https://img.icons8.com/color/512/admin-settings-male.png",
+                    placeholder: (context, url) => const CircularProgressIndicator(
+                          color: Colors.blue,
+                        )),
+              ),
             ElevatedButton(
                 onPressed: () {
                   Get.to(addcate());
