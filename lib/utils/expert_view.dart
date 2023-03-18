@@ -6,15 +6,24 @@ class expertv extends StatefulWidget {
   final String name;
   final String category;
   final String slot;
-  expertv({super.key, required this.name, required this.category,required this.slot});
+  expertv(
+      {super.key,
+      required this.name,
+      required this.category,
+      required this.slot});
 
   @override
   State<expertv> createState() => _expertvState();
 }
 
 class _expertvState extends State<expertv> {
+  bool cat = true;
   @override
   Widget build(BuildContext context) {
+    if (widget.category == "") {
+       cat = true;
+    }
+    else{cat = false;}
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
@@ -30,8 +39,7 @@ class _expertvState extends State<expertv> {
           height: MediaQuery.of(context).size.height / hei(context, 40),
           width: MediaQuery.of(context).size.width / wid(context, 40),
           child: CachedNetworkImage(
-              imageUrl:
-                  "https://img.icons8.com/material-rounded/512/gear.png",
+              imageUrl: cat?"https://img.icons8.com/material-rounded/512/gear.png":"https://img.icons8.com/ios-filled/512/medical-doctor.png",
               placeholder: (context, url) => const CircularProgressIndicator(
                     color: Colors.blue,
                   )),
@@ -45,15 +53,22 @@ class _expertvState extends State<expertv> {
                 widget.name,
                 style: TextStyle(fontSize: 16),
               ),
-            
+              Text(
+                widget.category,
+                style: TextStyle(fontSize: 13),
+              )
             ],
           ),
         ),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-           
-            Text(widget.slot,style: TextStyle(fontSize: 20,),),
+            Text(
+              widget.slot,
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
           ],
         )
       ]),

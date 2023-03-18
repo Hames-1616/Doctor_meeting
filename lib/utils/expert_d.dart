@@ -1,12 +1,19 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
+import 'package:project/backend/remove_cat.dart';
 import 'package:project/utils/Dimensions.dart';
 
 class expertd extends StatefulWidget {
   final String name;
   final String category;
   final String slot;
-  expertd({super.key, required this.name, required this.category,required this.slot});
+  expertd(
+      {super.key,
+      required this.name,
+      required this.category,
+      required this.slot});
 
   @override
   State<expertd> createState() => _expertdState();
@@ -30,8 +37,7 @@ class _expertdState extends State<expertd> {
           height: MediaQuery.of(context).size.height / hei(context, 40),
           width: MediaQuery.of(context).size.width / wid(context, 40),
           child: CachedNetworkImage(
-              imageUrl:
-                  "https://img.icons8.com/material-rounded/512/gear.png",
+              imageUrl: "https://img.icons8.com/material-rounded/512/gear.png",
               placeholder: (context, url) => const CircularProgressIndicator(
                     color: Colors.blue,
                   )),
@@ -45,15 +51,19 @@ class _expertdState extends State<expertd> {
                 widget.name,
                 style: TextStyle(fontSize: 16),
               ),
-            
             ],
           ),
         ),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-           
-            IconButton(onPressed: (){}, icon: Icon(Icons.delete))
+            IconButton(
+                onPressed: () {
+                  removecat(widget.name);
+                  Get.back();
+                  Fluttertoast.showToast(msg: "Category Removed");
+                },
+                icon: Icon(Icons.delete))
           ],
         )
       ]),

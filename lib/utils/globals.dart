@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
+bool uploade = true;
+late String dispurl;
 late String emailStored;
 late String passwordStored;
 late String doctorStored;

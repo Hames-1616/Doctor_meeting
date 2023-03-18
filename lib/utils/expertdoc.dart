@@ -5,6 +5,7 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:project/backend/delmeet.dart';
 import 'package:project/screens/doctor_center.dart';
 import 'package:project/screens/doctor_meetings.dart';
+import 'package:project/screens/test.dart';
 import 'package:project/utils/Dimensions.dart';
 import 'package:project/utils/globals.dart';
 
@@ -12,11 +13,13 @@ class expertdoc extends StatefulWidget {
   final String name;
   final String category;
   final String slot;
+  final String report;
   expertdoc(
       {super.key,
       required this.name,
       required this.category,
-      required this.slot});
+      required this.slot,
+      required this.report});
 
   @override
   State<expertdoc> createState() => _expertdocState();
@@ -27,8 +30,7 @@ class _expertdocState extends State<expertdoc> {
   Widget build(BuildContext context) {
     return InkResponse(
       onTap: () {
-      
-         showDialog(
+        showDialog(
             context: context,
             builder: (context) => AlertDialog(
                   actions: [
@@ -49,7 +51,10 @@ class _expertdocState extends State<expertdoc> {
                                   },
                                   child: Text("Delete")),
                               ElevatedButton(
-                                  onPressed: () {}, child: Text("History"))
+                                  onPressed: () {
+                                    Get.to(disp(image:widget.report));
+                                  },
+                                  child: Text("Report"))
                             ],
                           ),
                         ),

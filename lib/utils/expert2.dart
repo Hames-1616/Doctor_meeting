@@ -10,6 +10,10 @@ import 'package:project/backend/meeting_register.dart';
 
 import 'package:project/utils/Dimensions.dart';
 import 'package:project/utils/globals.dart';
+import 'dart:io';
+
+import 'package:dio/dio.dart' as deo;
+import 'package:file_picker/file_picker.dart';
 
 double prev = 0;
 
@@ -28,6 +32,41 @@ class expert2 extends StatefulWidget {
 }
 
 class _expert2State extends State<expert2> {
+  Future upload() async {
+    var dio = deo.Dio();
+
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+    if (result != null) {
+      File file = File(result.files.single.path ?? " ");
+
+      String filename = file.path.split('/').last;
+      String filepath = file.path;
+
+      deo.FormData data = deo.FormData.fromMap({
+        'key': '4cb92b58872c98e6a2de37d59e07d345',
+        'image': await deo.MultipartFile.fromFile(filepath, filename: filename),
+        'name': 'hames.jpg'
+      });
+
+      var response = await dio.post(
+        "https://api.imgbb.com/1/upload",
+        data: data,
+      );
+      print(response.data);
+      final parsedJson = response.data as Map<String, dynamic>;
+      final url = parsedJson['data']['display_url'] as String;
+      dispurl = url;
+      print(url);
+
+      setState(() {
+        uploade = false;
+      });
+    } else {
+      print("Result is null");
+    }
+  }
+
   bool done = false;
   String name = "";
   static final GlobalKey<FormState> frmm =
@@ -65,9 +104,9 @@ class _expert2State extends State<expert2> {
     return Form(
       key: frmm,
       child: InkResponse(
-        onTap: () {
+        onTap: () async {
           if (done == false) {
-            showDialog(
+            await showDialog(
                 context: context,
                 builder: (context) => AlertDialog(
                         // backgroundColor: ,
@@ -101,6 +140,9 @@ class _expert2State extends State<expert2> {
                                           Fluttertoast.showToast(
                                               msg:
                                                   "please Enter the name First");
+                                        } else if (dispurl == null) {
+                                          Fluttertoast.showToast(
+                                              msg: "please upload the report");
                                         } else {
                                           int x = ran();
                                           meetingreg(widget.service, name,
@@ -116,11 +158,19 @@ class _expert2State extends State<expert2> {
                                     },
                                     child: Text("Book Meeting")),
                               ),
-                              // ElevatedButton(
-                              //     onPressed: () {
-                              //       Get.to(MyImageUploader());
-                              //     },
-                              //     child: Text("Upload"))
+                              uploade
+                                  ? ElevatedButton(
+                                      onPressed: () {
+                                        Get.back();
+                                        Get.to(upload());
+                                      },
+                                      child: Text("Upload"))
+                                  : ElevatedButton(
+                                      onPressed: () {
+                                        Fluttertoast.showToast(
+                                            msg: "Image Uploaded");
+                                      },
+                                      child: Text("Uploaded"))
                             ],
                           )
                         ]));

@@ -86,6 +86,7 @@ class _doctormeetingState extends State<doctormeeting> {
                                     name: cle[index].patient,
                                     category: cle[index].category,
                                     slot: cle[index].slot,
+                                    report: cle[index].report,
                                   ));
                                 } else {
                                   return Container();

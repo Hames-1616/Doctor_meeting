@@ -9,6 +9,7 @@ import 'package:project/screens/add_doctor.dart';
 import 'package:project/screens/delete_cat.dart';
 import 'package:project/screens/remove_doctor.dart';
 import 'package:project/screens/view_category.dart';
+import 'package:project/screens/view_doctor.dart';
 import 'package:project/utils/Dimensions.dart';
 
 class admain extends StatefulWidget {
@@ -75,7 +76,15 @@ class _admainState extends State<admain> {
                 onPressed: () {
                   Get.to(remove_doc());
                 },
-                child: Text("Remove Doctor"))
+                child: Text("Remove Doctor")),
+            SizedBox(
+              height: 15,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Get.to(viewdoc());
+                },
+                child: Text("View Doctor")),
           ],
         ),
       ),

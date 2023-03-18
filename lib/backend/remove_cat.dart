@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-void sendlog(String service) async {
+void removecat(String service) async {
   Dio dio = Dio();
   Map<String, String> jsonMap = {'service':service };
   Response res = await dio.post(
