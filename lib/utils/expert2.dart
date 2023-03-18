@@ -7,6 +7,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:project/backend/get_appoint.dart';
 import 'package:project/backend/meeting_register.dart';
+
 import 'package:project/utils/Dimensions.dart';
 import 'package:project/utils/globals.dart';
 
@@ -90,27 +91,38 @@ class _expert2State extends State<expert2> {
                               },
                             )),
                         actions: [
-                          Center(
-                              child: ElevatedButton(
-                                  onPressed: () {
-                                    if (frmm.currentState!.validate()) {
-                                      if (name == "") {
-                                        Fluttertoast.showToast(
-                                            msg: "please Enter the name First");
-                                      } else {
-                                        int x = ran();
-                                        meetingreg(widget.service, name,
-                                            widget.category,x.toString());
-                                        Get.back();
-                                        Fluttertoast.showToast(
-                                            msg: "Slot booked");
-                                        setState(() {
-                                          done = true;
-                                        });
+                          Column(
+                            children: [
+                              Center(
+                                child: ElevatedButton(
+                                    onPressed: () {
+                                      if (frmm.currentState!.validate()) {
+                                        if (name == "") {
+                                          Fluttertoast.showToast(
+                                              msg:
+                                                  "please Enter the name First");
+                                        } else {
+                                          int x = ran();
+                                          meetingreg(widget.service, name,
+                                              widget.category, x.toString());
+                                          Get.back();
+                                          Fluttertoast.showToast(
+                                              msg: "Slot booked");
+                                          setState(() {
+                                            done = true;
+                                          });
+                                        }
                                       }
-                                    }
-                                  },
-                                  child: Text("Book Meeting")))
+                                    },
+                                    child: Text("Book Meeting")),
+                              ),
+                              // ElevatedButton(
+                              //     onPressed: () {
+                              //       Get.to(MyImageUploader());
+                              //     },
+                              //     child: Text("Upload"))
+                            ],
+                          )
                         ]));
           } else {
             showDialog(
