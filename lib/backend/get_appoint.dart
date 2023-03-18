@@ -1,7 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-String baseurl = "http://192.168.29.240:8000/appoint";
+String baseurl = "https://project-production-a953.up.railway.app/appoint";
 Future<List<meet>> getappoint() async {
   var response = await http.get(Uri.parse(baseurl));
   if (response.statusCode == 200) {

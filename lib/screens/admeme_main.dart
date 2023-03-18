@@ -4,6 +4,8 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get_core/get_core.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:project/screens/add_category.dart';
+import 'package:project/screens/add_doctor.dart';
+import 'package:project/screens/remove_doctor.dart';
 
 class admain extends StatefulWidget {
   const admain({super.key});
@@ -29,13 +31,19 @@ class _admainState extends State<admain> {
             SizedBox(
               height: 15,
             ),
-            ElevatedButton(onPressed: () {
-              
-            }, child: Text("Add Doctor")),
+            ElevatedButton(
+                onPressed: () {
+                  Get.to(adddoc());
+                },
+                child: Text("Add Doctor")),
             SizedBox(
               height: 15,
             ),
-            ElevatedButton(onPressed: () {}, child: Text("Remove Doctor"))
+            ElevatedButton(
+                onPressed: () {
+                  Get.to(remove_doc());
+                },
+                child: Text("Remove Doctor"))
           ],
         ),
       ),

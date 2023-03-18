@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -6,6 +7,7 @@ import 'package:project/screens/admeme.dart';
 import 'package:project/screens/doctor_login.dart';
 import 'package:project/screens/home.dart';
 import 'package:project/screens/patient_login.dart';
+import 'package:project/utils/Dimensions.dart';
 
 import '../utils/globals.dart';
 
@@ -50,9 +52,20 @@ class _loginState extends State<login> {
       body: Center(
         child: Container(
           height: MediaQuery.of(context).size.height,
+          margin: EdgeInsets.only(left: 10,right: 10),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              Container(
+                height: MediaQuery.of(context).size.height/hei(context, 250),
+                width: MediaQuery.of(context).size.width/wid(context, 250),
+                child: CachedNetworkImage(
+                    imageUrl: "https://img.icons8.com/ultraviolet/512/doctors-bag.png",
+                    placeholder: (context, url) => CircularProgressIndicator(
+                          color: Colors.blue,
+                        )),
+              ),
               ElevatedButton(
                 child: const Text("Log in as Patient"),
                 onPressed: () {

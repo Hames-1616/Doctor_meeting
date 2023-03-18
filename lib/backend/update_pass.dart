@@ -4,6 +4,6 @@ void updatepass(String Email,String password) async {
   Dio dio = Dio();
   Map<String, String> jsonMap = {'Email':Email ,'password':password};
   Response res = await dio.post(
-      "http://192.168.29.240:8000/update/",
+      "https://project-production-a953.up.railway.app/update/",
       data: jsonMap);
 }
