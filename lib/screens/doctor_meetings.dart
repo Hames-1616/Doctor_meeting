@@ -5,6 +5,7 @@ import 'package:project/backend/get_appoint.dart';
 import 'package:project/backend/getdocx.dart';
 import 'package:project/utils/Dimensions.dart';
 import 'package:project/utils/expert.dart';
+import 'package:project/utils/expertdoc.dart';
 import 'package:project/utils/globals.dart';
 
 class doctormeeting extends StatefulWidget {
@@ -16,6 +17,7 @@ class doctormeeting extends StatefulWidget {
 
 class _doctormeetingState extends State<doctormeeting> {
   bool empty = true;
+
   @override
   void initState() {
     super.initState();
@@ -79,12 +81,11 @@ class _doctormeetingState extends State<doctormeeting> {
                               itemCount: cle!.length,
                               itemBuilder: (context, index) {
                                 if (doctorStored == cle[index].name) {
-                                  int l = index + 1;
                                   return Container(
-                                      child: expert(
+                                      child: expertdoc(
                                     name: cle[index].patient,
                                     category: cle[index].category,
-                                    slot: l.toString(),
+                                    slot: cle[index].slot,
                                   ));
                                 } else {
                                   return Container();

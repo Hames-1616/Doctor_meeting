@@ -55,7 +55,13 @@ class _expertState extends State<expert> {
             ],
           ),
         ),
-        Text(widget.slot,style: TextStyle(fontSize: 20,),)
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Slot"),
+            Text(widget.slot,style: TextStyle(fontSize: 20,),),
+          ],
+        )
       ]),
     );
   }

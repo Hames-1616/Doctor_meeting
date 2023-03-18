@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/get_core.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:project/backend/getdocx.dart';
+import 'package:project/screens/doctor_center.dart';
 import 'package:project/screens/doctor_meetings.dart';
 import 'package:project/utils/customtextfield.dart';
 import 'package:project/utils/globals.dart';
@@ -77,7 +78,7 @@ class _doctorLoginState extends State<doctorLogin> {
                 }
                 if (login) {
                   doctorStored = id;
-                  Get.offAll(doctormeeting());
+                  Get.offAll(doctor_center());
                 } else {
                   showDialog(
                       context: context,

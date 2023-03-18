@@ -1,9 +1,16 @@
+import 'dart:math';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 late String emailStored;
 late String passwordStored;
 late String doctorStored;
 bool b = false;
+
+int ran() {
+  int random = Random().nextInt(1000);
+  return random;
+}
 
 Future<void> saveusersession(String email) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();

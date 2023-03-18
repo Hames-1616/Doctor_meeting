@@ -18,12 +18,22 @@ class meet {
   final String patient;
   final String sent;
   final String category;
+  final String slot;
 
-  meet({required this.name, required this.patient, required this.sent,required this.category});
+  meet(
+      {required this.name,
+      required this.patient,
+      required this.sent,
+      required this.category,
+      required this.slot});
 
   factory meet.fromJson(Map<String, dynamic> json) {
     return meet(
-        name: json['name'], patient: json['patient'], sent: json['sent'],category: json['category']);
+        name: json['name'],
+        patient: json['patient'],
+        sent: json['sent'],
+        category: json['category'],
+        slot:json['slot']);
   }
   static List<meet> fromJsonList(List<dynamic> jsonList) {
     return jsonList.map((e) => meet.fromJson(e)).toList();

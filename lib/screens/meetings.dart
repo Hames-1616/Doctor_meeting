@@ -81,7 +81,7 @@ class _meetingsState extends State<meetings> {
                                     if (emailStored == cle[index].sent) {
                                   
                                       return Container(
-                                        child: expert(name: cle[index].name,category: cle[index].category,slot: "",)
+                                        child: expert(name: cle[index].name,category: cle[index].category,slot: cle[index].slot,)
                                       );
                                     } else {
                                       return Container();

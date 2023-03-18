@@ -65,41 +65,42 @@ class _expert2State extends State<expert2> {
       key: frmm,
       child: InkResponse(
         onTap: () {
-          if(done==false) {
+          if (done == false) {
             showDialog(
-              context: context,
-              builder: (context) => AlertDialog(
-                      // backgroundColor: ,
-                      content: Center(
-                          heightFactor: 1,
-                          child: TextFormField(
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return "PLease Enter the name";
-                              }
-                            },
-                            controller: cone,
-                            autofocus: true,
-                            decoration: InputDecoration(
-                              hintText: "Name",
-                            ),
-                            onChanged: (value) {
-                              setState(() {
-                                name = value;
-                              });
-                            },
-                          )),
-                      actions: [
-                        Center(
-                            child: ElevatedButton(
-                                onPressed: () {
-                                
+                context: context,
+                builder: (context) => AlertDialog(
+                        // backgroundColor: ,
+                        content: Center(
+                            heightFactor: 1,
+                            child: TextFormField(
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return "Please Enter the name";
+                                }
+                              },
+                              controller: cone,
+                              autofocus: true,
+                              decoration: InputDecoration(
+                                hintText: "Name",
+                              ),
+                              onChanged: (value) {
+                                setState(() {
+                                  name = value;
+                                });
+                              },
+                            )),
+                        actions: [
+                          Center(
+                              child: ElevatedButton(
+                                  onPressed: () {
                                     if (frmm.currentState!.validate()) {
                                       if (name == "") {
                                         Fluttertoast.showToast(
                                             msg: "please Enter the name First");
                                       } else {
-                                        meetingreg(widget.service, name,widget.category);
+                                        int x = ran();
+                                        meetingreg(widget.service, name,
+                                            widget.category,x.toString());
                                         Get.back();
                                         Fluttertoast.showToast(
                                             msg: "Slot booked");
@@ -108,41 +109,38 @@ class _expert2State extends State<expert2> {
                                         });
                                       }
                                     }
-                                  
-                                },
-                                child: Text("Book Meeting")))
-                      ]));
-          }
-          else{
-             showDialog(
-                                        context: context,
-                                        builder: (context) => AlertDialog(
-                                                // backgroundColor: ,
-                                                content: const Center(
-                                                  heightFactor: 1,
-                                                  child: Text(
-                                                    "Already booked",
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        // color: kpri,
-                                                        fontSize: 18),
-                                                  ),
-                                                ),
-                                                actions: [
-                                                  TextButton(
-                                                      onPressed: () {
-                                                        Get.back();
-                                                      },
-                                                      child: const Center(
-                                                          child: Text(
-                                                        "OK",
-                                                        style: TextStyle(
-                                                            // fontFamily: "Poppins",
-                                                            // color: kpri),
-                                                            ),
-                                                      )))
-                                                ]));
+                                  },
+                                  child: Text("Book Meeting")))
+                        ]));
+          } else {
+            showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                        // backgroundColor: ,
+                        content: const Center(
+                          heightFactor: 1,
+                          child: Text(
+                            "Already booked",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                // color: kpri,
+                                fontSize: 18),
+                          ),
+                        ),
+                        actions: [
+                          TextButton(
+                              onPressed: () {
+                                Get.back();
+                              },
+                              child: const Center(
+                                  child: Text(
+                                "OK",
+                                style: TextStyle(
+                                    // fontFamily: "Poppins",
+                                    // color: kpri),
+                                    ),
+                              )))
+                        ]));
           }
         },
         child: Container(
@@ -180,7 +178,9 @@ class _expert2State extends State<expert2> {
                                 imageUrl:
                                     "https://img.icons8.com/material-sharp/512/user.png",
                                 placeholder: (context, url) =>
-                                    CircularProgressIndicator(color: Colors.blue,))),
+                                    CircularProgressIndicator(
+                                      color: Colors.blue,
+                                    ))),
                         SizedBox(
                           width: 10,
                         ),
