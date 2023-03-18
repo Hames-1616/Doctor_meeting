@@ -58,11 +58,13 @@ class _loginState extends State<login> {
               Container(
                 height: MediaQuery.of(context).size.height/hei(context, 250),
                 width: MediaQuery.of(context).size.width/wid(context, 250),
-                child: CachedNetworkImage(
-                    imageUrl: "https://img.icons8.com/ultraviolet/512/doctors-bag.png",
-                    placeholder: (context, url) => const CircularProgressIndicator(
-                          color: Colors.blue,
-                        )),
+                child: Center(
+                  child: CachedNetworkImage(
+                      imageUrl: "https://img.icons8.com/ultraviolet/512/doctors-bag.png",
+                      placeholder: (context, url) => const CircularProgressIndicator(
+                            color: Colors.blue,
+                          )),
+                ),
               ),
               ElevatedButton(
                 child: const Text("Log in as Patient"),

@@ -32,13 +32,15 @@ class _admainState extends State<admain> {
             Container(
               height: MediaQuery.of(context).size.height / hei(context, 250),
               width: MediaQuery.of(context).size.width / wid(context, 250),
-              child: CachedNetworkImage(
-                  imageUrl:
-                      "https://img.icons8.com/color/512/admin-settings-male.png",
-                  placeholder: (context, url) =>
-                      const CircularProgressIndicator(
-                        color: Colors.blue,
-                      )),
+              child: Center(
+                child: CachedNetworkImage(
+                    imageUrl:
+                        "https://img.icons8.com/color/512/admin-settings-male.png",
+                    placeholder: (context, url) =>
+                        const CircularProgressIndicator(
+                          color: Colors.blue,
+                        )),
+              ),
             ),
             ElevatedButton(
                 onPressed: () {

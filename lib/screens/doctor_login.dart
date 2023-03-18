@@ -37,6 +37,8 @@ class _doctorLoginState extends State<doctorLogin> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Text("D O C T O R   L O G I N",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+          SizedBox(height: 20,),
           CustomTextField(
               hintText: "Name",
               icon: Icons.account_circle_rounded,

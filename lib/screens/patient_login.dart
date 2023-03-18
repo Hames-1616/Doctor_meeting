@@ -34,6 +34,8 @@ class _patientlogState extends State<patientlog> {
         body: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        Text("P A T I E N T   L O G I N",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+          SizedBox(height: 20,),
         CustomTextField(
             hintText: "Email",
             icon: Icons.email,

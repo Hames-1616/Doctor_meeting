@@ -20,6 +20,7 @@ class meet {
   final String category;
   final String slot;
   final String report;
+  final String doc;
 
   meet(
       {required this.name,
@@ -27,7 +28,8 @@ class meet {
       required this.sent,
       required this.category,
       required this.slot,
-      required this.report});
+      required this.report,
+      required this.doc});
 
   factory meet.fromJson(Map<String, dynamic> json) {
     return meet(
@@ -36,8 +38,8 @@ class meet {
         sent: json['sent'],
         category: json['category'],
         slot: json['slot'],
-        report: json['report']
-        );
+        report: json['report'],
+        doc: json['doc']);
   }
   static List<meet> fromJsonList(List<dynamic> jsonList) {
     return jsonList.map((e) => meet.fromJson(e)).toList();
