@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 bool uploade = true;
 late String dispurl;
+late String responddoc;
 late String emailStored;
 late String passwordStored;
 late String doctorStored;

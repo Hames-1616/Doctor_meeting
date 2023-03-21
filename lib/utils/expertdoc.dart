@@ -1,13 +1,19 @@
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get_core/get_core.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:project/backend/delmeet.dart';
+import 'package:project/backend/set_doc.dart';
 import 'package:project/screens/doctor_center.dart';
 import 'package:project/screens/doctor_meetings.dart';
 import 'package:project/screens/test.dart';
 import 'package:project/utils/Dimensions.dart';
 import 'package:project/utils/globals.dart';
+import 'package:dio/dio.dart' as deo;
 
 class expertdoc extends StatefulWidget {
   final String name;
@@ -26,6 +32,42 @@ class expertdoc extends StatefulWidget {
 }
 
 class _expertdocState extends State<expertdoc> {
+  Future upl() async {
+    var dio = deo.Dio();
+
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+    if (result != null) {
+      File file = File(result.files.single.path ?? " ");
+
+      String filename = file.path.split('/').last;
+      String filepath = file.path;
+
+      deo.FormData data = deo.FormData.fromMap({
+        'key': '4cb92b58872c98e6a2de37d59e07d345',
+        'image': await deo.MultipartFile.fromFile(filepath, filename: filename),
+        'name': 'hames.jpg'
+      });
+
+      var response = await dio.post(
+        "https://api.imgbb.com/1/upload",
+        data: data,
+      );
+      print(response.data);
+      final parsedJson = response.data as Map<String, dynamic>;
+      final url = parsedJson['data']['display_url'] as String;
+      responddoc = url;
+      print(url);
+
+      setState(() {
+        uplo = false;
+      });
+    } else {
+      print("Result is null");
+    }
+  }
+
+  bool uplo = true;
   @override
   Widget build(BuildContext context) {
     return InkResponse(
@@ -52,12 +94,34 @@ class _expertdocState extends State<expertdoc> {
                                   child: Text("Delete")),
                               ElevatedButton(
                                   onPressed: () {
-                                    Get.to(disp(image:widget.report));
+                                    Get.to(disp(image: widget.report));
                                   },
-                                  child: Text("Report"))
+                                  child: Text("Report")),
+                              uplo
+                                  ? ElevatedButton(
+                                      onPressed: () {
+                                        Get.back();
+                                        upl();
+                                      },
+                                      child: Text("Upload"))
+                                  : ElevatedButton(
+                                      onPressed: () {
+                                        Fluttertoast.showToast(
+                                            msg: "Image Uploaded");
+                                      },
+                                      child: Text("Uploaded"))
                             ],
                           ),
                         ),
+                        uplo
+                            ? Container()
+                            : ElevatedButton(
+                                onPressed: () {
+                                  doc_s(widget.slot, responddoc);
+                                  Get.back();
+                                  Fluttertoast.showToast(msg: "Submitted");
+                                },
+                                child: Text("Send"))
                       ],
                     )
                   ],

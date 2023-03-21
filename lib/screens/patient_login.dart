@@ -22,6 +22,14 @@ class _patientlogState extends State<patientlog> {
     getlog().then((value) {
       user = value;
     });
+    updatedd();
+  }
+
+  void updatedd() {
+    print("called");
+    getlog().then((value) {
+      user = value;
+    });
   }
 
   String mail = "";
@@ -30,12 +38,18 @@ class _patientlogState extends State<patientlog> {
   TextEditingController pass = new TextEditingController();
   @override
   Widget build(BuildContext context) {
+    updatedd();
     return Scaffold(
         body: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("P A T I E N T   L O G I N",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
-          SizedBox(height: 20,),
+        Text(
+          "P A T I E N T   L O G I N",
+          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+        ),
+        SizedBox(
+          height: 20,
+        ),
         CustomTextField(
             hintText: "Email",
             icon: Icons.email,
