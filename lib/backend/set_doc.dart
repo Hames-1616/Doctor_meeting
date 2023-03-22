@@ -5,6 +5,6 @@ void doc_s(String Slot,String doc) async {
   Dio dio = Dio();
   Map<String, String> jsonMap = {'name':doctorStored ,'slot':Slot,'doc':doc};
   Response res = await dio.post(
-      "https://project-production-a953.up.railway.app/updoc/",
+      "https://project-production-cc10.up.railway.app/updoc/",
       data: jsonMap);
 }

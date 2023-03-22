@@ -5,6 +5,6 @@ void delmeet(String name,String category) async {
   Dio dio = Dio();
   Map<String, String> jsonMap = {'name':name , 'category': category};
   Response res = await dio.post(
-      "https://project-production-a953.up.railway.app/delmeet/",
+      "https://project-production-cc10.up.railway.app/delmeet/",
       data: jsonMap);
 }

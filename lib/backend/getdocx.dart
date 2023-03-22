@@ -1,7 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-String baseurl = "https://project-production-a953.up.railway.app/docx";
+String baseurl = "https://project-production-cc10.up.railway.app/docx";
 Future<List<docx>> getdocx() async {
   var response = await http.get(Uri.parse(baseurl));
   if (response.statusCode == 200) {

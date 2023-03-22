@@ -15,6 +15,6 @@ void meetingreg(
   };
   print(jsonMap);
   Response res = await dio.post(
-      "https://project-production-a953.up.railway.app/book/",
+      "https://project-production-cc10.up.railway.app/book/",
       data: jsonMap);
 }
